@@ -8,6 +8,8 @@ let operandA;
 let operator;
 let operandB;
 
+const clearButton = document.getElementById("clear");
+
 // when a number button is clicked, append that number to the total
 numberButtons.forEach((button) =>
   button.addEventListener("click", () => appendNumber(button.textContent))
@@ -15,9 +17,18 @@ numberButtons.forEach((button) =>
 
 // function to append number
 function appendNumber(number) {
+  if (total.textContent === "0") {
+    clearTotal();
+  }
   total.textContent += number;
   console.log(total.textContent);
 }
+
+// clear the total when needed
+function clearTotal() {
+  total.textContent = "";
+}
+clearButton.addEventListener("click", () => clearTotal());
 
 // Basic operation functions for add, subtract, multiply, and divide
 function add(a, b) {
