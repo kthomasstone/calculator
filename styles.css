@@ -33,6 +33,7 @@ button {
   padding: 16px;
   border-radius: 8px;
   outline: #79747e;
+  min-height: 72px;
 }
 
 .row-removals {
