@@ -9,6 +9,10 @@ button {
   border: none;
 }
 
+h1 {
+  overflow: hidden;
+}
+
 .calc-section {
   display: flex;
   justify-content: center;

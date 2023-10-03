@@ -18,7 +18,17 @@ let operator;
 let operandB;
 let answer;
 
-let operandACheck;
+let equalizeCheck = function() {
+  if (
+    operandA !== undefined &&
+    operandB !== undefined &&
+    operator !== undefined
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 // NUMBERS
 
@@ -60,6 +70,9 @@ function appendNumber(number) {
 // clear the total when needed
 function clearTotal() {
   total.textContent = "";
+  operandA = undefined;
+  operandB = undefined;
+  operator = undefined;
 }
 clearButton.addEventListener("click", () => clearTotal());
 
@@ -72,6 +85,10 @@ operationButtons.forEach((button) => {
 });
 
 function selectOperator(operation) {
+  if (equalizeCheck()) {
+    equalize();
+  }
+
   operator = operation;
   console.log(operator);
   total.textContent += operation;
@@ -114,11 +131,12 @@ function operate(a, operator, b) {
   }
 }
 
-equalButton.addEventListener("click", () => {
+equalButton.addEventListener("click", () => equalize());
+
+function equalize() {
   answer = operate(operandA, operator, operandB);
-  console.log(answer);
-  operandA = undefined;
+  total.textContent = answer;
+  operandA = total.textContent;
   operandB = undefined;
   operator = undefined;
-  total.textContent = answer;
-});
+}
